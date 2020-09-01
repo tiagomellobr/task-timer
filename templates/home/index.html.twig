@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="row">    
+    <div class="col">
+        <ul class="list-group mt-4">
+            {% for project in projects %}
+                <li class="list-group-item list-group-item-action">
+                    <a href="{{ path('tasks', {'project': project.id}) }}">
+                        {{ project.name }}
+                    </a>
+                    <span class="badge badge-info float-right">Taks: {{ project.task | length }}</span>
+                    <a href="{{ path('project_update', {'project': project.id}) }}"><span class="badge badge-light float-right"><i class="fa fa-edit"></i></span></a>
+                </li>
+            {% else %}
+                <li class="list-group-item">No projects, yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="row">    
+    <div class="col">
+        <a href="{{ path('project_save') }}" class="btn btn-primary btn-block my-2"><i class="fa fa-files-o"></i> Add Project</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="row mt-2">
+    <div class="col">
+        <h2>Add Project</h2>
+        {{ form_start(formProject) }}
+            <div class="form-group">
+                {{ form_row(formProject.name) }}
+            </div>
+        {{ form_end(formProject) }}
+        {% if project.id %}
+            <a href="{{ path("project_remove", {'project': project.id}) }}" class="btn btn-danger btn-block my-1">Remove</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

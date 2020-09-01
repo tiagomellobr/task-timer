@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="row">
+    <div class="col">
+        <h1>{{ project.name }}</h1>    
+        <ul class="list-group mt-4">
+            {% for task in project.task %}
+                <li class="list-group-item list-group-item-action">
+                    <a href="{{ path('timers', {'task': task.id}) }}">
+                        {{ task.title }}
+                    </a>
+                    <span class="badge badge-info float-right">Timers: {{ task.timers | length }}</span>
+                    <a href="{{ path('task_update', {'project':project.id,'task': task.id}) }}"><span class="badge badge-light float-right"><i class="fa fa-edit"></i></span></a>
+                </li>
+            {% else %}
+                <li class="list-group-item">No tasks, yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="row">    
+    <div class="col">
+        <a href="{{ path('task_save', {'project':project.id}) }}" class="btn btn-primary btn-block my-2"><i class="fa fa-tasks"></i> Add Task</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="row mt-2">
+    <div class="col">
+        <h2>Add Timer</h2>
+        {{ form_start(formTimer) }}
+            <div class="form-group">
+                {{ form_row(formTimer.startRecord) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(formTimer.endRecord) }}
+            </div>
+        {{ form_end(formTimer) }}
+        {% if timer.id %}
+            <a href="{{ path("timer_remove", {'timer': timer.id}) }}" class="btn btn-danger btn-block my-1">Remove</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
