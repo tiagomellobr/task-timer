@@ -4,7 +4,7 @@
     <div class="col">
         <h1>{{ project.name }}</h1>    
         <ul class="list-group mt-4">
-            {% for task in project.task %}
+            {% for task in tasks %}
                 <li class="list-group-item list-group-item-action">
                     <a href="{{ path('timers', {'task': task.id}) }}">
                         {{ task.title }}

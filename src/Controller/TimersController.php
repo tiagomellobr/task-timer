@@ -18,8 +18,15 @@ class TimersController extends AbstractController
     */
     public function index(Task $task)
     {
+        $em = $this->getDoctrine()->getManager();
+        $timers = $em->getRepository(Timer::class)->findBy(
+            ['task' => $task],
+            ['id' => 'DESC']
+        );
+        
         return [
-            'task' => $task
+            'task' => $task,
+            'timers' => $timers
         ];
     }
 

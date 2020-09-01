@@ -4,14 +4,14 @@
     <div class="col">
         <h1>{{ task.project.name }} - {{ task.title }}</h1>
         <ul class="list-group">
-            {% for timer in task.timers %}
+            {% for timer in timers %}
             <li class="list-group-item list-group-item-action list-group-item-light">
                 {{ timer.startRecord | date("d/m/Y H:i") }} - {% if timer.endRecord %}{{ timer.endRecord | date("d/m/Y H:i") }}{% else %}In Progress{% endif %}
                 <a href="{{ path('timer_update', {'task': task.id, 'timer': timer.id}) }}"><span class="badge badge-light float-right"><i class="fa fa-edit"></i></span></a>
             </li>
             {% endfor %}
         </ul>
-        </div>
+    </div>
 </div>
 <div class="row">    
     <div class="col">

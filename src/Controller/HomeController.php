@@ -22,14 +22,9 @@ class HomeController extends AbstractController
         
         $em = $this->getDoctrine()->getManager();
 
-        $projects = $em->getRepository(Project::class)->findAll();
-        
-        $tasks = $em->getRepository(Task::class)->findAll();
-
-        $timer = new Timer();
+        $projects = $em->getRepository(Project::class)->findBy([], ['id' => 'DESC']);
         
         return [
-            'tasks' => $tasks,
             'projects' => $projects
         ];
     }

@@ -20,8 +20,15 @@ class TasksController extends AbstractController
     */
     public function index(Project $project)
     {
+        $em = $this->getDoctrine()->getManager();
+        $tasks = $em->getRepository(Task::class)->findBy(
+            ['project' => $project],
+            ['id' => 'DESC']
+        );
+        
         return [
-            'project' => $project
+            'project' => $project,
+            'tasks' => $tasks
         ];
     }
 

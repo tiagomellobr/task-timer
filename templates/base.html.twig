@@ -14,7 +14,7 @@
                 <a class="navbar-brand mx-auto" href="{{ path("home") }}">Task Timer</a>
             </div>
         </nav>
-        <div class="container mt-2">
+        <div class="container mt-3">
             {% for flashMessage in app.session.flashbag.get('success') %}
         	<div class="alert alert-success" role="alert">
             	<div class="alert-text">{{ flashMessage }}</div>
