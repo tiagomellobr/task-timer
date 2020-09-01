@@ -27,7 +27,7 @@ class TasksController extends AbstractController
 
     /**
      * @Route("/task/save/{project}/", name="task_save")
-     * @Template("home/formTask.html.twig")
+     * @Template("tasks/formTask.html.twig")
      */   
     public function saveTask(Request $request, Project $project)
     {
@@ -51,7 +51,7 @@ class TasksController extends AbstractController
     }
     /**
      * @Route("/task/update/{project}/{task}", name="task_update")
-     * @Template("home/formTask.html.twig")
+     * @Template("tasks/formTask.html.twig")
      */
     public function updateTask(Request $request, Project $project, Task $task = null)
     {

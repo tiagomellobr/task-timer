@@ -25,7 +25,7 @@ class TimersController extends AbstractController
 
     /**
      * @Route("/timer/save/{task}", name="timer_save")
-     * @Template("home/formTimer.html.twig")
+     * @Template("timers/formTimer.html.twig")
      */   
     public function saveTimer(Request $request, Task $task)
     {
@@ -51,7 +51,7 @@ class TimersController extends AbstractController
 
     /**
      * @Route("/timer/update/{task}/{timer}", name="timer_update")
-     * @Template("home/formTimer.html.twig")
+     * @Template("timers/formTimer.html.twig")
      */   
     public function updateTimer(Request $request, Task $task, Timer $timer = null)
     {
