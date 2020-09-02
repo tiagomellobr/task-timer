@@ -6,6 +6,7 @@ use App\Repository\TaskRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * @ORM\Entity(repositoryClass=TaskRepository::class)
@@ -115,5 +116,23 @@ class Task
         $this->project = $project;
 
         return $this;
+    }
+
+    public function getTotalTime()
+    {
+        $totalHours = 0;
+        $totalMin = 0;
+        foreach ($this->getTimers() as $value) {
+            if($value->getEndRecord()){
+                $endR = $value->getEndRecord();
+                $startR = $value->getStartRecord();
+                $diff = $endR->diff($startR);
+                $totalHours += $diff->h;
+                $totalMin += $diff->i;
+            }
+        }
+        $totalHours += intval($totalMin / 60);
+        $totalMin = $totalMin % 60;
+        return $totalHours . 'h ' . $totalMin . 'm';
     }
 }
