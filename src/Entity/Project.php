@@ -81,4 +81,25 @@ class Project
 
         return $this;
     }
+
+    public function getTotalTime()
+    {
+        $totalHours = 0;
+        $totalMin = 0;
+        $tasks = $this->getTask();
+        foreach ($tasks as $task) {
+            foreach ($task->getTimers() as $timer) {
+                if($timer->getEndRecord()){
+                    $endR = $timer->getEndRecord();
+                    $startR = $timer->getStartRecord();
+                    $diff = $endR->diff($startR);
+                    $totalHours += $diff->h;
+                    $totalMin += $diff->i;
+                }
+            }
+        }        
+        $totalHours += intval($totalMin / 60);
+        $totalMin = $totalMin % 60;
+        return $totalHours . 'h ' . $totalMin . 'm';
+    }
 }

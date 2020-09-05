@@ -122,10 +122,10 @@ class Task
     {
         $totalHours = 0;
         $totalMin = 0;
-        foreach ($this->getTimers() as $value) {
-            if($value->getEndRecord()){
-                $endR = $value->getEndRecord();
-                $startR = $value->getStartRecord();
+        foreach ($this->getTimers() as $timer) {
+            if($timer->getEndRecord()){
+                $endR = $timer->getEndRecord();
+                $startR = $timer->getStartRecord();
                 $diff = $endR->diff($startR);
                 $totalHours += $diff->h;
                 $totalMin += $diff->i;

@@ -9,6 +9,7 @@
                         {{ project.name }}
                     </a>
                     <span class="badge badge-info float-right">Taks: {{ project.task | length }}</span>
+                    <span class="badge badge-dark float-right mx-1">Time: {{ project.totalTime }}</span>
                     <a href="{{ path('project_update', {'project': project.id}) }}"><span class="badge badge-light float-right"><i class="fa fa-edit"></i></span></a>
                 </li>
             {% else %}
